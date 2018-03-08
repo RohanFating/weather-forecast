@@ -41,7 +41,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.getWeather();
-   this.weatherServiceCallInterval =  setInterval(() => {
+    this.weatherServiceCallInterval = setInterval(() => {
       this.getWeather();
     }, HOURS);
   }
@@ -49,20 +49,20 @@ export class WeatherComponent implements OnInit, OnDestroy {
   /**
    * Lifecycle Hook for component clean up
    */
- public ngOnDestroy(): void {
-   clearInterval( this.weatherServiceCallInterval );
- }
+  public ngOnDestroy(): void {
+    clearInterval(this.weatherServiceCallInterval);
+  }
 
   /**
    * Service call to get weather data
    */
   private getWeather() {
-    this.weatherService.getWeatherByCity(this.city).subscribe( (data) => {
+    this.weatherService.getWeatherByCity(this.city).subscribe((data) => {
       this.weatherData = this.appUtilService.createDataModel(data);
-      if ( this.weatherData.length === 0 ) {
+      if (this.weatherData.length === 0) {
         this.errorMessage = ERROR_MESSAGE;
       }
-      },
+    },
       (err) => {
         this.errorMessage = ERROR_MESSAGE;
       }

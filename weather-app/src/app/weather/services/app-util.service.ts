@@ -30,6 +30,8 @@ export class AppUtilService {
       if ((previousDate && previousDate !== value.dt_txt.split(' ')[0]) ) {
         weatherData.push( this.getDataModel(dayWeather, min, max, pressure, humidity, previousDate));
         dayWeather = [];
+        max = 0;
+        min = 0;
       }
       max = this.getAverageValues('max', value, max);
       min = this.getAverageValues('min', value, min);
@@ -121,12 +123,12 @@ export class AppUtilService {
     let newValue: number;
     switch (name) {
       case 'min':
-        newValue = value ? Math.max(Number(this.converKelvinToCelcious(data.main.temp_min)), value) :
+        newValue = ( value && value !== 0) ? Math.min(Number(this.converKelvinToCelcious(data.main.temp_min)), value) :
           Number(this.converKelvinToCelcious(data.main.temp_min));
         break;
       case 'max':
-        newValue = value ? Math.max(Number(this.converKelvinToCelcious(data.main.temp_max)), value) :
-          Number(this.converKelvinToCelcious(data.main.temp_max));
+        newValue = ( value && value !== 0 ) ? Math.max(Number(this.converKelvinToCelcious(data.main.temp_max)), value) :
+          Number(this.converKelvinToCelcious(data.main. temp_max));
         break;
       case 'pressure':
         newValue = value ? Number( Number((data.main.pressure + value) / 2).toFixed(0)) : data.main.pressure;
