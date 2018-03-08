@@ -1,0 +1,52 @@
+.weather {
+    top: 70px;
+    position: relative;
+
+    &__heading {
+        padding: 10px;
+        background: $color-blue-150;
+        color: $color-white;   
+        font-size: $font-size-xl;     
+    }
+    &__wrapper {
+        background: $color-grey-50;
+        box-shadow: 0 0 5px 0 $color-black;
+        margin: 20px 10px;
+        color: $color-blue-150;
+
+        &__subHeading {
+            font-size: $font-size-l;
+        }
+        &__description {
+            font-size: $font-size-m;
+        }
+        &__forcast {
+            padding: 0 15px;
+            &__text {
+                font-size: $font-size-sm;
+                padding: 0;
+            }
+        }
+       
+    }
+}
+
+@media ( max-width: $mobile-screen ) {
+    .weather {
+        &__heading {
+            font-size: $font-size-l;     
+        }
+      
+        &__wrapper {
+            &__subHeading {
+                font-size: $font-size-m;
+            }
+            &__description {
+                font-size: $font-size-sm;
+            }
+            &__text {
+                font-size: $font-size-xs;
+            }
+        }
+    }
+}

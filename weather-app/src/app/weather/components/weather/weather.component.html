@@ -1,3 +1,40 @@
-<p>
-  weather works!
-</p>
+<div class="weather">
+  <div class="text-center row">
+    <div class="weather__heading col-md-12 fixed-top">
+      {{city}} Weather Forecast
+    </div>
+  </div>
+  <div class="weather__wrapper py-3" *ngFor="let weather of weatherData; let i = index;">
+    <div class="col-md-12 weather__wrapper__subHeading">
+      <b>{{weather.day}}{{i===0? ', Today' : ''}}</b>
+    </div>
+    <div class="col-md-12">
+      <b>{{weather.weatherSituation}}</b>
+    </div>
+    <div class="col-md-12 no-gutters weather__wrapper__description">
+      <div class="col">
+        <span class="mr-2">
+          <b>Max: </b>{{weather.maxTemp}}
+          <sup>o</sup> C</span>
+        <span class="mr-2">
+          <b>Min: </b>{{weather.minTemp}}
+          <sup>o</sup> C</span>
+      </div>
+      <div class="col">
+        <span class="mr-2">
+          <b class="mr-1">Pressure: </b>{{weather.avgPressure}} hPa</span>
+        <span class="mr-2">
+          <b>Humidity: </b>{{weather.avgHumidity}} %</span>
+      </div>
+    </div>
+    <div class="row py-3 weather__wrapper__forcast">
+      <div *ngFor="let forcast of weather.forcast; let ind=index;" class="col mb-2 weather__wrapper__forcast__text">
+        <div class="col-12">
+          <b>{{i==0 && ind===0? 'NOW' : forcast.time}}</b>
+        </div>
+        <div class="col-12">{{forcast.currentTemp}}
+          <sup>o</sup> C</div>
+      </div>
+    </div>
+  </div>
+</div>
