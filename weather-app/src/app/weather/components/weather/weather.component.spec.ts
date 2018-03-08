@@ -34,6 +34,6 @@ describe('WeatherComponent', () => {
     spyOn(weatherComponent.weatherService , 'getWeatherByCity').and.returnValue(Observable.of(WEATHER_RESPONSE));
     weatherComponent.getWeather();
     fixture.detectChanges();
-    expect(component.weatherData).toBeDefined();
+    expect(component.weatherData.length).toBeGreaterThan(0);
   });
 });

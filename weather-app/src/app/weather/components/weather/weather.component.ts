@@ -59,6 +59,9 @@ export class WeatherComponent implements OnInit, OnDestroy {
   private getWeather() {
     this.weatherService.getWeatherByCity(this.city).subscribe( (data) => {
       this.weatherData = this.appUtilService.createDataModel(data);
+      if ( this.weatherData.length === 0 ) {
+        this.errorMessage = ERROR_MESSAGE;
+      }
       },
       (err) => {
         this.errorMessage = ERROR_MESSAGE;
