@@ -6,7 +6,7 @@ This application is capable to show five days of weather forecast
 
 ## Setup and Installation
 1. git clone https://github.com/RohanFating/weather-forecast.git
-2. Go to folder weather app
+2. Go to folder weather-forecast//weather-app
 3. Open terminal and run command - npm install
 4. To launch application run command - npm start / ng serve
 5. open "http://localhost:4200/" in browser
