@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
 
+This application is capable to show five days of weather forecast
+
+## Setup and Installation
+1. git clone https://github.com/RohanFating/weather-forecast.git
+2. Go to folder weather app
+3. Open terminal and run command - npm install
+4. To launch application run command - npm start / ng serve
+5. open "http://localhost:4200/" in browser
+6. To run unit test run command in terminal - ng test / npm run test
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
