@@ -2,12 +2,6 @@
     top: 70px;
     position: relative;
 
-    &__heading {
-        padding: 10px;
-        background: $color-blue-150;
-        color: $color-white;   
-        font-size: $font-size-xl;     
-    }
     &__wrapper {
         background: $color-grey-50;
         box-shadow: 0 0 5px 0 $color-black;

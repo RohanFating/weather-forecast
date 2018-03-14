@@ -1,6 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <app-weather city="London"></app-weather>
+    <div class="text-center row">
+        <div class="app__heading col-md-12 fixed-top">
+          {{selectedValue}} Weather Forecast
+        </div>
+      </div>
+      <div class="col-md-12 no-gutters">
+          <select [(ngModel)]="selectedValue" class="app__countries">
+              <option *ngFor="let c of countries" [ngValue]="c.name">{{c.name}}</option>
+            </select>
+      </div>
+  <app-weather [city]="selectedValue"></app-weather>
  </div>
  
  

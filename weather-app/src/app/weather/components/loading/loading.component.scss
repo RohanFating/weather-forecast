@@ -1,0 +1,50 @@
+.loading {
+
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 45%;
+    z-index: 100;
+    width: 100%;
+    &__wrapper {
+        font-size: $font-size-xl;
+        &__dots {
+        animation-name: blink;
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        font-size: 30px;
+        &:nth-child(3) {
+            animation-delay: .3s;
+        }
+        &:nth-child(3) {
+            animation-delay: .5s;
+        }
+    }
+}
+}
+
+@media ( max-width: $mobile-screen ) {
+    .loading {
+        margin: 0 35%;
+        &__wrapper {
+            font-size: $font-size-l;
+        }
+    }
+}
+@keyframes blink {
+   
+    0% {
+      opacity: .2;
+    }
+    
+    20% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: .2;
+    }
+}

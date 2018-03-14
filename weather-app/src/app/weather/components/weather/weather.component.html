@@ -1,10 +1,7 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <div class="weather">
   <div *ngIf="weatherData.length>0">
-    <div class="text-center row">
-      <div class="weather__heading col-md-12 fixed-top">
-        {{city}} Weather Forecast
-      </div>
-    </div>
+    
     <div class="weather__wrapper py-3" *ngFor="let weather of weatherData; let i = index;">
       <div class="col-md-12 weather__wrapper__subHeading">
         <b>{{weather.day}}{{i===0? ', Today' : ''}}</b>

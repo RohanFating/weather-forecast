@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { WeatherCondition, WeatherModel } from '../../interfaces/weather.interface';
 import { AppUtilService } from '../../services/app-util.service';
 
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const HOURS: number = 1000 * 60 * 60;
 const ERROR_MESSAGE: string = 'Service Error';
+
 /**
  * WeatherComponent to show five days weather forcast
  */
@@ -13,12 +13,13 @@ const ERROR_MESSAGE: string = 'Service Error';
   selector: 'app-weather',
   templateUrl: './weather.component.html'
 })
-export class WeatherComponent implements OnInit, OnDestroy {
+export class WeatherComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() public city: string;
 
   public weatherData: Array<WeatherModel>;
   public errorMessage: string;
+  public isLoading: boolean = false;
 
   private weatherServiceCallInterval: any;
   private weatherService: WeatherService;
@@ -47,6 +48,12 @@ export class WeatherComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Lifecyle hook ngOnChanges
+   */
+  public ngOnChanges(): void {
+    this.getWeather();
+  }
+  /**
    * Lifecycle Hook for component clean up
    */
   public ngOnDestroy(): void {
@@ -57,16 +64,19 @@ export class WeatherComponent implements OnInit, OnDestroy {
    * Service call to get weather data
    */
   private getWeather() {
+    this.isLoading = true;
+    this.weatherData = [];
     this.weatherService.getWeatherByCity(this.city).subscribe((data) => {
+      this.isLoading = false;
       this.weatherData = this.appUtilService.createDataModel(data);
       if (this.weatherData.length === 0) {
         this.errorMessage = ERROR_MESSAGE;
       }
     },
       (err) => {
+        this.isLoading = false;
         this.errorMessage = ERROR_MESSAGE;
       }
     );
   }
-
 }

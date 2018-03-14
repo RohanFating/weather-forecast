@@ -13,3 +13,7 @@ export interface WeatherModel {
     avgPressure: number;
     avgHumidity: number;
 }
+
+export interface CityList {
+    name: string;
+}

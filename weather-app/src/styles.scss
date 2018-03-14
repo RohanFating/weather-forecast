@@ -1,4 +1,6 @@
 @import "./styles/variables.scss";
 //Keeping here to access call common variable
+@import "./app/app.component.scss";
+@import "./app/weather/components/loading/loading.component.scss";
 @import "./app/weather/components/weather/weather.component.scss";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
